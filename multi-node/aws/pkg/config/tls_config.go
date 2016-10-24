@@ -31,7 +31,6 @@ type RawTLSAssets struct {
 // PEM -> gzip -> base64 encoded TLS assets.
 type CompactTLSAssets struct {
 	CACert        string
-	CAKey         string
 	APIServerCert string
 	APIServerKey  string
 	WorkerCert    string
@@ -148,7 +147,12 @@ func ReadTLSAssets(dirname string) (*RawTLSAssets, error) {
 		*file.cert = certData
 		keyData, err := ioutil.ReadFile(keyPath)
 		if err != nil {
-			return nil, err
+			if file.name == "ca" {
+				// Ignore failures to read ca-key.pem as it is not required
+				keyData = nil
+			} else {
+				return nil, err
+			}
 		}
 		*file.key = keyData
 	}
@@ -225,7 +229,6 @@ func (r *RawTLSAssets) compact(cfg *Config, kmsSvc encryptService) (*CompactTLSA
 	}
 	compactAssets := CompactTLSAssets{
 		CACert:        compact(r.CACert),
-		CAKey:         compact(encrypt(r.CAKey)),
 		APIServerCert: compact(r.APIServerCert),
 		APIServerKey:  compact(encrypt(r.APIServerKey)),
 		WorkerCert:    compact(r.WorkerCert),

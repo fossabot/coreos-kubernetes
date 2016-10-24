@@ -154,7 +154,7 @@ write_files:
       # https://github.com/coreos/rkt/issues/2878
       exec nsenter -m -u -i -n -p -t 1 -- /usr/bin/rkt "$@"
 
-  - path: /etc/kubernetes/ssl/worker.pem.enc
+  - path: /etc/kubernetes/ssl/worker.pem
     encoding: gzip+base64
     content: {{.TLSConfig.WorkerCert}}
 
@@ -162,7 +162,7 @@ write_files:
     encoding: gzip+base64
     content: {{.TLSConfig.WorkerKey}}
 
-  - path: /etc/kubernetes/ssl/ca.pem.enc
+  - path: /etc/kubernetes/ssl/ca.pem
     encoding: gzip+base64
     content: {{.TLSConfig.CACert}}
 

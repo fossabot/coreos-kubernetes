@@ -752,11 +752,11 @@ write_files:
           - port: 80
             targetPort: 9090
         
-  - path: /etc/kubernetes/ssl/ca.pem.enc
+  - path: /etc/kubernetes/ssl/ca.pem
     encoding: gzip+base64
     content: {{.TLSConfig.CACert}}
 
-  - path: /etc/kubernetes/ssl/apiserver.pem.enc
+  - path: /etc/kubernetes/ssl/apiserver.pem
     encoding: gzip+base64
     content: {{.TLSConfig.APIServerCert}}
 

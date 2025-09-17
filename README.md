@@ -1,4 +1,6 @@
 # Kubernetes on CoreOS
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Furbanairship%2Fcoreos-kubernetes.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Furbanairship%2Fcoreos-kubernetes?ref=badge_shield)
+
 
 This repo contains tooling and documentation around deploying Kubernetes using CoreOS.
 Initial setup of a Kubernetes cluster is covered, but ongoing maintenance and updates of the cluster is not addressed.
@@ -36,3 +38,7 @@ https://coreos.com/kubernetes/docs/latest/
 ## Running Kubernetes Conformance Tests
 
 - [Conformance Tests](Documentation/conformance-tests.md)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Furbanairship%2Fcoreos-kubernetes.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Furbanairship%2Fcoreos-kubernetes?ref=badge_large)
